@@ -1,0 +1,177 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* html,
+body {
+  @apply bg-white dark:bg-gray-950;
+
+  @media (prefers-color-scheme: dark) {
+    color-scheme: dark;
+  }
+} */
+html,
+body {
+  @apply bg-white text-black;
+  color-scheme: light;
+  font-size: 13px;
+}
+
+#nprogress .bar {
+  background: red !important;
+  height: 3px !important;
+  z-index: 200000;
+}
+
+/* Spinner customization */
+#nprogress .spinner-icon {
+  border-top-color: rgb(175, 175, 215) !important;
+  border-left-color: rgb(167, 167, 198) !important;
+}
+
+@layer components {
+  .footer__heading {
+    @apply text-[22px] text-white/60 font-extralight mb-4 first-letter:font-[700]
+  }
+
+  .footer__link {
+    @apply text-sm font-extralight text-white/60 hover:text-gray-400 hover:underline cursor-pointer mb-3 w-fit
+  }
+
+  .signup__code {
+    @apply w-[50px] h-[50px] outline-none border-[1px] border-gray-300 focus:border-gray-300 focus:border-[2px] bg-gray-200 rounded-[8px] px-4 text-center text-[20px]
+  }
+
+
+  .textarea__wrapper_class {
+    @apply mb-8 w-[100%] sm:w-[100%] md:w-[80%] lg:w-[80%] xl:w-[80%]
+  }
+
+  .textarea__class {
+    @apply border-[1px] border-gray-500/30 w-full px-3 py-2 rounded bg-gray-100/40 h-[250px]
+  }
+
+  .input__wrapper_class {
+    @apply mb-8 w-[100%] sm:w-[100%] md:w-[80%] lg:w-[80%] xl:w-[80%]
+  }
+
+  .input__control__wrapper {
+    @apply w-[100%] sm:w-[70%] md:w-[65%] lg:w-[60%] xl:w-[50%]
+  }
+
+  .input__class {
+    @apply border-[1px] border-gray-500/30 w-full px-3 py-2 rounded bg-gray-100/40
+  }
+
+  .input__class__error {
+    @apply w-full mt-0 text-[13px] bg-red-100/50 py-2 px-3 rounded-xl flex place-items-center gap-1
+  }
+
+  .input__heading__class {
+    @apply text-black ml-1.5 mb-2 font-semibold
+  }
+
+
+
+
+
+  .input__button__class {
+    @apply border-[1px] border-none bg-blue-900 w-full sm:w-[70%] md:w-[65%] lg:w-[60%] xl:w-[40%] py-2.5 rounded text-white mt-3 shadow-lg shadow-blue-400 cursor-pointer
+  }
+
+  .form__wrapper__class {
+    @apply w-[100%] mx-auto mt-10 flex flex-col items-center
+  }
+
+  .tbl__class {
+    @apply w-[100%] mt-1
+  }
+}
+
+@font-face {
+  font-family: 'Poppins';
+  src: url('/fonts/poppins/Poppins-Thin.ttf') format('truetype');
+  font-weight: 200;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Poppins';
+  src: url('/fonts/poppins/Poppins-Light.ttf') format('truetype');
+  font-weight: 300;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Poppins';
+  src: url('/fonts/poppins/Poppins-Regular.ttf') format('truetype');
+  font-weight: 400;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Poppins';
+  src: url('/fonts/poppins/Poppins-Medium.ttf') format('truetype');
+  font-weight: 500;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Poppins';
+  src: url('/fonts/poppins/Poppins-SemiBold.ttf') format('truetype');
+  font-weight: 600;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Poppins';
+  src: url('/fonts/poppins/Poppins-Bold.ttf') format('truetype');
+  font-weight: 700;
+  font-style: normal;
+}
+
+.scrollbar-hidden {
+  overflow-y: auto;
+  /* or overflow-x if horizontal */
+  scrollbar-width: none;
+  /* Firefox: hide scrollbar */
+}
+
+.scrollbar-hidden::-webkit-scrollbar {
+  width: 0px;
+  /* Chrome/Safari: hide scrollbar */
+  height: 0px;
+}
+
+.scrollbar-hidden:hover {
+  scrollbar-width: thin;
+  /* Firefox: show thin scrollbar on hover */
+}
+
+.scrollbar-hidden:hover::-webkit-scrollbar {
+  width: 8px;
+  /* Chrome/Safari: show scrollbar on hover */
+  height: 8px;
+}
+
+.scrollbar-hidden:hover::-webkit-scrollbar-thumb {
+  background-color: rgba(0, 0, 0, 0.3);
+  border-radius: 4px;
+}
+
+
+
+.bottom-scrollbar-hidden {
+  overflow-y: auto;
+  /* or overflow-x if horizontal */
+  scrollbar-width: none;
+  /* Firefox: hide scrollbar */
+}
+
+.bottom-scrollbar-hidden::-webkit-scrollbar {
+  width: 0px;
+  /* Chrome/Safari: hide scrollbar */
+  height: 0px;
+}
+
+

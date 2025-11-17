@@ -1,0 +1,189 @@
+import { createContext, useContext, useEffect, useRef, useState } from "react";
+import { BiChevronLeft, BiChevronRight } from "react-icons/bi";
+import { FaMaximize, FaMinimize } from "react-icons/fa6";
+import { IoClose } from "react-icons/io5";
+
+const SliderContext = createContext<any | null>(null)
+
+export function useSliderContext() {
+    const context = useContext(SliderContext)
+    /* if (!context) {
+        throw new Error("useSliderContext must be used within a SliderProvider")
+    } */
+    return context
+}
+
+const IMG_BASE_URL = import.meta.env.VITE_IMG_BASE_URL
+
+export const SliderProvider = ({ children }: any) => {
+    const [dialog, setDialog] = useState<any>(false)
+    const [selectedSlide, setSelectedSlide] = useState<any>(null)
+    const [slides, setGallery] = useState<any>(false)
+    const [currentSlide, setCurrentSlide] = useState<any>(0)
+    const [listing, setListing] = useState<any>(null)
+    const slideStep = useRef(0)
+    const counter = useRef(0)
+    let slideIncrement = 0
+    const [maximized, setMaximized] = useState(false)
+    const [normalState, setNormalState] = useState(true)
+
+    const handleTouchStart = (e: any) => {
+        slideStep.current = e.touches[0].clientX;
+    }
+
+    const handleTouchEnd = (e: any) => {
+        const endX = e.changedTouches[0].clientX;
+        const deltaX = slideStep.current - endX;
+
+        if (deltaX > 50) {
+            // swipe left
+            setCurrentSlide((i: any) => (i + 1) % slides.length);
+        } else if (deltaX < -50) {
+            // swipe right
+            setCurrentSlide((i: any) => (i - 1 + slides.length) % slides.length);
+        }
+    };
+
+    const handleClose = () => { setDialog(false) }
+    const handleOpen = () => { setDialog(true) }
+
+    const prev = () => {
+        setCurrentSlide((currentSlide: any) => {
+            return (currentSlide === 0) ? slides.length - 1 : currentSlide - 1
+        })
+    }
+
+    const next = () => {
+        setCurrentSlide((currentSlide: any) => {
+            return (currentSlide === slides.length - 1) ? 0 : currentSlide + 1
+        })
+    }
+
+    useEffect(() => {
+        if (selectedSlide !== null) {
+            setCurrentSlide(selectedSlide - 1)
+        }
+    }, [selectedSlide])
+
+    let vals = {
+        dialog, setDialog,
+        selectedSlide, setSelectedSlide,
+        slides, setGallery,
+        setListing
+    }
+
+    useEffect(() => {
+        const handleKeyDown = (e: KeyboardEvent) => {
+            if (e.key === 'Escape') {
+                handleClose()
+            }
+        }
+
+        if (dialog) {
+            document.addEventListener('keydown', handleKeyDown)
+        }
+
+        return () => {
+            document.removeEventListener('keydown', handleKeyDown)
+        }
+    }, [dialog])
+
+    return (
+        <SliderContext.Provider value={vals}>
+            {
+                dialog &&
+                <div className={`flex w-full h-full bg-white z-[20001] 
+                fixed top-0 left-0 right-0 bottom-0 `}>
+                    <div className={`grid grid-cols-12 gap-0 w-full`}>
+                        <div className={`${maximized ? 'col-span-12' : 'col-span-12 md:col-span-9'}  w-full h-full relative bg-black flex`}>
+                            <div className={` w-full h-screen flex overflow-hidden`}>
+                                {
+                                    slides && selectedSlide &&
+                                    slides.map((slide: any, index: any) => {
+
+                                        return (
+                                            <div className={`w-full h-full flex flex-shrink-0 flex-grow-0 transition-transform  place-content-center place-items-center  relative
+                                            ease-in-out duration-1000`}
+                                                style={{ transform: `translateX(-${currentSlide * 100}%)` }}
+                                            >
+                                                <img
+                                                    onTouchStart={handleTouchStart}
+                                                    onTouchEnd={handleTouchEnd}
+                                                    key={index}
+                                                    src={IMG_BASE_URL + slide.image_url}
+                                                    alt=""
+
+                                                    className={`object-scale-down w-full h-full 
+                                            `}
+                                                />
+                                                <div className={`absolute bottom-[0px] w-full z-[20px] px-5 py-7 bg-black/30 md:hidden`}>
+                                                    <div className={` text-center text-white text-[19px]`}>
+                                                        {slide?.image_title}
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        )
+                                    })
+                                }
+                            </div>
+
+                            {/** previous button */}
+                            <button onMouseDown={prev} className={`block absolute top-0 bottom-0 
+                                                p-[1rem] cursor-pointer left-0 group h-full 
+                                                transition duration-1000 ease-in-out`}>
+                                <div className={`w-[50px] h-[50px] bg-white/60 rounded-full flex place-content-center place-items-center group-hover:bg-white/30
+                                                        transition duration-500 ease-in-out`}>
+                                    <BiChevronLeft className=' stroke-white fill-black w-[2rem] h-[2rem]' />
+                                </div>
+                            </button>
+
+
+                            {/**f next button */}
+                            <button onMouseDown={next} className={`block absolute top-0 bottom-0 
+                                                    p-[1rem] cursor-pointer ${maximized ? 'right-5' : 'right-5 md:right-0'} group 
+                                                     transition duration-1000 ease-in-out`}>
+                                <div className={`w-[50px] h-[50px] bg-white/60 rounded-full flex place-content-center place-items-center group-hover:bg-white/30
+                                                        transition duration-500 ease-in-out`}>
+                                    <BiChevronRight className=' stroke-white fill-black w-[2rem] h-[2rem]' />
+                                </div>
+                            </button>
+
+                            {/** close button handle */}
+                            <div
+                                onMouseDown={() => handleClose()}
+                                className={`w-[50px] h-[50px] z-[300] bg-white
+                                                    flex place-content-center place-items-center
+                                                    rounded-full absolute left-2 top-2 cursor-pointer
+                                                    hover:bg-white/40 transition duration-1000 ease-in-out`}>
+                                <IoClose className={`text-[30px]`} />
+                            </div>
+
+
+                            {/** Maximize or Minimize */}
+                            <div
+                                onClick={() => {
+                                    setMaximized(!maximized)
+                                    setNormalState(!normalState)
+                                }}
+                                className={`w-[50px] h-[50px] z-[300] bg-white flex place-content-center place-items-center rounded-full absolute right-2 top-2 cursor-pointer hover:bg-white/40 transition duration-1000 ease-in-out`}>
+                                {
+                                    maximized ?
+                                        <FaMinimize className={`text-[30px]`} />
+                                        :
+                                        <FaMaximize className={`text-[30px]`} />
+                                }
+                            </div>
+                        </div>
+                        <div className={`${maximized ? 'hidden' : 'hidden md:block md:col-span-3'} px-5`}>
+                            <h1 className=' text-[22px] my-4 font-sans font-extrabold tracking-tight leading-[24px]'>Photos for {listing && listing.title}</h1>
+                            <div className=' my-4 '>{currentSlide + 1} / {slides.length}</div>
+                            <hr />
+                            <div className=' my-4 whitespace-pre-line'>{slides[currentSlide].image_title}</div>
+                        </div>
+                    </div>
+                </div>
+            }
+            {children}
+        </SliderContext.Provider>
+    )
+}
