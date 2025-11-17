@@ -37,9 +37,9 @@ const LoadingMessage = ({ loading }: LoadingProp) => {
                 <div className="text-lg">
 
                     <div style={{ marginBottom: '0px', display: 'flex', flexDirection: 'column', justifyContent: 'center', alignItems: 'center', gap: '0.5em' }}>
-                        <TbRotateClockwise2 className={`${spin && 'animate-spin'}`} size={30} />
+                        <div className='spinner'></div>
 
-                        <b className=' tracking-tight'>veycet</b>
+                        <b style={{ fontFamily: 'arial', fontSize: '13px', fontWeight: 'bold' }}>veycet</b>
                     </div>
 
 
