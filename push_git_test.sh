@@ -3,13 +3,14 @@
 # Exit immediately if a command exits with a non-zero status
 set -e
 
+APP_NAME="bycet_index_test"
 
 echo "🌿  Renaming branch to main..."
 git branch -M main
 
 
 echo "🔁 Setting remote to TEST repo..."
-git remote set-url origin https://github.com/n2hq/test_index_veycet.git
+git remote add origin https://github.com/n2hq/$APP_NAME.git || git remote set-url origin https://github.com/n2hq/$APP_NAME.git
 
 
 
@@ -18,7 +19,7 @@ git checkout main || git checkout -b main
 
 
 echo "🔄 Pulling latest changes..."
-#git pull origin main
+git pull origin main --allow-unrelated-histories --no-rebase || echo "No existing history to pull"
 
 
 echo "Deleting build folder..."
