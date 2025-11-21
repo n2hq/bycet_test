@@ -9,7 +9,7 @@ echo "🌿  Renaming branch to main..."
 git branch -M main
 
 
-echo "🔁 Setting remote to TEST repo..."
+echo "🔁 Setting remote to PROD repo..."
 git remote add origin https://github.com/n2hq/$APP_NAME.git || git remote set-url origin https://github.com/n2hq/$APP_NAME.git
 
 
