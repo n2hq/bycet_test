@@ -118,10 +118,10 @@ const Related = ({
                                     <div key={userId}>
                                         <div>
                                             <NavLink to={`/${userId}`}>
-                                                <div className={`relative h-[120px] rounded-lg md:h-[180px] overflow-hidden`}>
+                                                <div className={`relative h-[100px] rounded-lg md:h-[180px] overflow-hidden`}>
                                                     <img
-                                                        className={`${data?.image_url ? 'object-cover' : 'object-scale-down'}  w-full h-full
-                                                    text-sm bg-gray-100`}
+                                                        className={`object-scale-down  w-full h-full
+                                                    text-sm bg-black`}
                                                         src={
                                                             data?.image_url ?
                                                                 IMG_BASE_URL + data?.image_url :
