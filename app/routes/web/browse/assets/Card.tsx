@@ -160,14 +160,14 @@ const Card = ({ listing }: any) => {
                     <div className={`flex place-content-between gap-2`}>
                         {/** left */}
                         <div className={`flex place-items-start gap-2 w-full`}>
-                            <div className={`w-[90px] h-[90px] min-w-[90px]   bg-black bg-cover bg-center overflow-hidden relative border border-gray-300`}
+                            <div className={`max-w-[90px] h-[90px] min-w-[90px]   bg-gray-50 bg-cover bg-center overflow-hidden relative border flex place-items-center place-content-center`}
 
                             >
                                 <img
                                     src={imgscr}
                                     alt={""}
-                                    className={`object-cover w-full h-full text-sm
-                             z-0 bg-white`}
+                                    className={` w-full h-auto text-sm
+                             z-0 bg-gray-100`}
                                 />
 
                             </div>
