@@ -35,16 +35,14 @@ const SigninButton = () => {
     }, [user])
 
     return (
-        <div className={` `}>
+        <div className={``}>
             {
                 auth.user ?
                     <button
                         onClick={(e) => showMenu()}
                         onBlur={(e) => closeMenu()}
 
-                        className={`w-[30px] h-[30px] bg-gray-400 hover:bg-gray-300 rounded-full text-white
-                flex place-items-center place-content-center text-[13px]
-                relative cursor-pointer`}>
+                        className={`w-[30px] h-[30px] bg-gray-400 hover:bg-gray-300 rounded-full text-white flex place-items-center place-content-center text-[13px] relative cursor-pointer`}>
                         {
                             userProfileImgData !== null ?
                                 <AccountUserImage userProfileImgData={userProfileImgData} /> :

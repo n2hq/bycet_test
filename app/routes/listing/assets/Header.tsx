@@ -31,7 +31,7 @@ const Header = ({ listing, profileImageData, operatingHoursStatus, ratingsData }
                 </div>
                 <div className={`w-full block`}>
                     <div className={`text-[19px] md:text-[24px]
-                font-black  leading-[1.2em] font-sans text-black tracking-tight`}>
+                font-black  leading-[1.2em] font-sans text-blue-800 tracking-tight`}>
                         {listing?.title}
 
                     </div>

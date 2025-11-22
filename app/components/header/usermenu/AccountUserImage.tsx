@@ -21,17 +21,17 @@ const AccountUserImage = ({ userProfileImgData }: any) => {
     return (
         <div className={` relative h-[30px] w-[30px] rounded-full
                     overflow-hidden flex place-content-center place-items-center
-                    bg-white`}>
+                    bg-white z-0`}>
             {
                 userProfileImgData?.image_url ?
                     <img
-                        className={`object-cover w-full h-full`}
+                        className={`object-cover w-full h-full z-0`}
                         src={
                             config.IMG_BASE_URL + userProfileImgData?.image_url
                         }
                         alt=""
                     /> :
-                    <BiUser className={`object-cover w-[70%] h-[70%]`} />
+                    <BiUser className={`object-cover w-[70%] h-[70%] z-0`} />
             }
 
         </div>
