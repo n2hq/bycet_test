@@ -5,6 +5,7 @@ import { getListingByCategory } from '~/lib/lib'
 import LatestStarRating from '~/routes/web/search/assets/LatestStarRating'
 import SectionTitle from './SectionTitle'
 import RatingBoxSquare from './RatingBoxSquare'
+import Placeholder from '~/components/content/Placeholder'
 
 const latestData = [
     {
@@ -118,16 +119,21 @@ const Related = ({
                                     <div key={userId}>
                                         <div>
                                             <NavLink to={`/${userId}`}>
-                                                <div className={`relative rounded-lg h-[180px] overflow-hidden bg-black`}>
-                                                    <img
-                                                        className={`object-scale-down  w-full h-full text-sm`}
-                                                        src={
-                                                            data?.image_url ?
-                                                                IMG_BASE_URL + data?.image_url :
-                                                                'images/placeholder22.png'
-                                                        }
-                                                        alt={data.title}
-                                                    />
+                                                <div className={`relative rounded-lg h-[180px] overflow-hidden bg-black border`}>
+
+                                                    {
+                                                        data?.image_url !== null ?
+                                                            <img
+                                                                className={`object-scale-down  w-full h-full text-sm`}
+                                                                src={
+                                                                    data?.image_url &&
+                                                                    IMG_BASE_URL + data?.image_url
+                                                                }
+                                                                alt={data.title}
+                                                            /> :
+                                                            <Placeholder />
+                                                    }
+
                                                 </div>
                                             </NavLink>
                                         </div>
