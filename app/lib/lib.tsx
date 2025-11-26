@@ -18,8 +18,11 @@ export const config = {
     ENV: import.meta.env.VITE_ENV
 }
 
+
+
 export const appConfig = {
-    NAVBAR_HEIGHT: 0
+    NAVBAR_HEIGHT: 0,
+    searchBaseUrl: '/web/search'
 }
 
 export const getSiteLogo = () => {
