@@ -19,7 +19,12 @@ const SITE_BASE_URL = import.meta.env.VITE_SITE_BASE_URL
 } */
 
 export function useAuth() {
-    return useContext(AuthContext);
+
+    const context = useContext(AuthContext)
+    if (context)
+        return context
+
+    return null
 }
 
 export function AuthProvider({ children }: { children: ReactNode }) {

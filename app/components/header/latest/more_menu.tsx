@@ -5,8 +5,8 @@ import { FaBlenderPhone, FaShoppingBag } from "react-icons/fa";
 
 export const moremenu = [
     {
-        title: `Veycet Global`,
-        url: 'http://veycet.com',
+        title: `Bycet`,
+        url: 'http://Bycet.com',
         icon: <BiWorld />
     },
     {
