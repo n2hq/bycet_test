@@ -5,13 +5,14 @@ import { BsAirplane, BsHouse } from 'react-icons/bs'
 import { FaChevronLeft, FaChevronRight } from 'react-icons/fa'
 import { FcHome } from 'react-icons/fc'
 import { GiKnifeFork } from 'react-icons/gi'
+import { appConfig } from '~/lib/lib'
 
 const hotels = [
     {
         title: "Luxury shopping paradise amid dazzling modern architecture.",
         city: `dubai`,
         category: 'shopping and retail',
-        link: '/web/browse?q=&category=shopping and retail&city=dubai',
+        link: `${appConfig.searchBaseUrl}?q=&category=shopping and retail&city=dubai`,
         bglink: `https://www.vexcolt.com/wp-content/uploads/2018/04/ref_Mall_01.jpg`,
 
     },
@@ -93,7 +94,7 @@ const Hotel = () => {
                         <div className={`flex gap-3`}>
                             {
                                 hotels?.map((business: HotelType, index: number) => {
-                                    const link = `/web/browse?q=&category=${business?.category}&city=${business?.city}`
+                                    const link = `${appConfig.searchBaseUrl}?q=${business.city}`
                                     return (
                                         <div
                                             key={index}

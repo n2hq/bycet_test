@@ -2,6 +2,7 @@ import { BiCopyright, BiHome, BiLock, BiSearch, BiWorld } from "react-icons/bi";
 import { BsBook, BsFillBriefcaseFill, BsLock } from "react-icons/bs";
 import { CgPhone } from "react-icons/cg";
 import { FaBlenderPhone, FaShoppingBag } from "react-icons/fa";
+import { appConfig } from "~/lib/lib";
 
 export const moremenu = [
     {
@@ -15,8 +16,8 @@ export const moremenu = [
         icon: <BiHome />
     },
     {
-        title: "Browse",
-        url: '/web/browse',
+        title: "Search",
+        url: `${appConfig.searchBaseUrl}`,
         icon: <BiSearch />
     },
     {

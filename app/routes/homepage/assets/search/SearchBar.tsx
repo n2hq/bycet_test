@@ -1,9 +1,10 @@
 import { BiSearch } from "react-icons/bi"
+import { appConfig } from "~/lib/lib"
 
 export const SearchBar = () => {
     return (
 
-        <form action="/web/browse" className={` w-full`}>
+        <form action={appConfig.searchBaseUrl} className={` w-full`}>
             <div className={`border-2 border-black rounded-full flex place-items-center place-content-between gap-3 pl-[15px] pr-[4px] py-1 bg-gray-100 shadow-md shadow-gray-300 font-poppins font-light`}>
                 <div>
                     <BiSearch size={25} />
