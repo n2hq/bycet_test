@@ -4,21 +4,21 @@ import { BsThreeDotsVertical } from 'react-icons/bs';
 
 const menudata = [
     {
-        title: "Browse",
-        url: "/web/browse"
+        title: "Search",
+        url: "/web/search"
     },
     {
         title: "New York",
-        url: "/web/browse?q=new york"
+        url: "/web/search?q=new york"
     },
 
     {
         title: "London",
-        url: "/web/browse?q=london"
+        url: "/web/search?q=london"
     },
     {
         title: "Dubai",
-        url: "/web/browse?q=dubai"
+        url: "/web/search?q=dubai"
     },
 ]
 const SmallMenu = () => {

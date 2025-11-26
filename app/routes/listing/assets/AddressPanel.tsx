@@ -122,7 +122,7 @@ const AddressPanelContent = () => {
                         </div>
                     </div>
                     <div>
-                        <div className={`flex place-items-center place-content-center w-[40px] h-[40px] bg-gray-500 rounded-md text-white text-[22px] font-normal `}>
+                        <div className={`flex place-items-center place-content-center w-[40px] h-[40px] border shadow bg-gray-800 border-blue-100 rounded-md text-white text-[22px] font-bold `}>
                             {
                                 addressCtx.ratingsData?.rating >= 0 ?
                                     formatNumber(Number(addressCtx.ratingsData?.rating)) :
