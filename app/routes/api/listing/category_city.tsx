@@ -49,8 +49,8 @@ export const loader: LoaderFunction = async ({ request, params }) => {
                 ON bpi.business_guid = d.gid
             LEFT JOIN tbl_operating_hours oh
                 ON oh.business_guid = d.gid
-            WHERE d.category = ?     
-            AND ci.name = ?
+            WHERE d.category rlike ?     
+            AND ci.name rlike ?
             GROUP BY d.gid
             `,
             [

@@ -7,7 +7,7 @@ import { createReadableStreamFromReadable } from "@remix-run/node";
 import { RemixServer, useNavigate, useRouteError, Outlet, useNavigation, isRouteErrorResponse, Meta, Links, ScrollRestoration, Scripts, Link, useLocation, useLoaderData, NavLink as NavLink$1, useSearchParams, useParams } from "@remix-run/react";
 import { isbot } from "isbot";
 import { renderToPipeableStream } from "react-dom/server";
-import React, { useContext, createContext, useState, useEffect, useRef } from "react";
+import React, { createContext, useContext, useState, useEffect, useRef } from "react";
 import NProgress from "nprogress";
 import { FaSpinner, FaSchool, FaWheelchair, FaSwimmingPool, FaParking, FaTiktok, FaVimeoSquare, FaLinkedinIn, FaWifi, FaSignOutAlt, FaCarSide, FaAngleDown, FaMobile, FaQuestion, FaBriefcase, FaShoppingBag, FaBlenderPhone, FaChevronLeft, FaChevronRight, FaFacebook, FaInstagram, FaStore, FaYoutubeSquare, FaPinterestSquare, FaFacebookSquare } from "react-icons/fa";
 import CryptoJS from "crypto-js";
@@ -21497,8 +21497,8 @@ const loader$a = async ({ request, params }) => {
                 ON bpi.business_guid = d.gid
             LEFT JOIN tbl_operating_hours oh
                 ON oh.business_guid = d.gid
-            WHERE d.category = ?     
-            AND ci.name = ?
+            WHERE d.category rlike ?     
+            AND ci.name rlike ?
             GROUP BY d.gid
             `,
       [
