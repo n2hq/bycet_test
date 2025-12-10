@@ -346,7 +346,7 @@ const Card = ({ listing }: any) => {
                         {
                             baseListing?.phone &&
                             <a href={`tel:${baseListing?.phone}`}>
-                                <button className={`bg-gray-500 rounded w-full text-white flex place-items-center place-content-center text-[15px] gap-2 py-[5px]`}>
+                                <button className={`bg-[#D71616] rounded w-full text-white flex place-items-center place-content-center text-[15px] gap-2 py-[5px]`}>
                                     <BiPhone size={20} className={`mt-[2px]`} />
                                     <span>Call</span>
                                 </button>
