@@ -123,7 +123,7 @@ export function ComposeImages({ imgs, index, showCarousel, showGallery }: BlockP
     return (
         <>
             {
-                imageTotal === 1 && <div className={`h-[350px] rounded-xl overflow-hidden
+                imageTotal === 1 && <div className={`h-[400px] rounded-xl overflow-hidden
                 grid grid-cols-12`}>
                     <div className={`col-span-12 
                     row-span-2 overflow-hidden shadow-gray-500`}
@@ -136,7 +136,7 @@ export function ComposeImages({ imgs, index, showCarousel, showGallery }: BlockP
 
 
             {
-                imageTotal === 2 && <div className={`h-[350px] rounded-xl overflow-hidden
+                imageTotal === 2 && <div className={`h-[400px] rounded-xl overflow-hidden
                 grid grid-cols-12 gap-[5px]`}>
                     <div className={`col-span-7 bg-black
                     row-span-2 overflow-hidden
@@ -159,7 +159,7 @@ export function ComposeImages({ imgs, index, showCarousel, showGallery }: BlockP
 
 
             {
-                imageTotal === 3 && <div className={`h-[350px] rounded-xl overflow-hidden
+                imageTotal === 3 && <div className={`h-[400px] rounded-xl overflow-hidden
                 grid grid-cols-12 gap-[5px]`}>
 
                     <div className={`col-span-7 row-span-2 overflow-hidden`}
