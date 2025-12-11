@@ -171,19 +171,26 @@ export const ListingCarousel = ({ images, listing }: any) => {
                         slides?.map((slide: any, index: any) => {
 
                             return (
-                                <img
-                                    onTouchStart={handleTouchStart}
-                                    onTouchEnd={handleTouchEnd}
-                                    onMouseDown={(e) => showCarousel(index)}
-                                    key={index}
-                                    src={config?.IMG_BASE_URL + slide?.image_url}
-
-                                    alt=""
-                                    style={{ transform: `translateX(-${currentSlide * 100}%)` }}
-                                    className={`object-cover w-full h-full 
-                      block flex-shrink-0 flex-grow-0 transition-transform
+                                <div className={`h-full w-full relative block flex-shrink-0 flex-grow-0 transition-transform
                       ease-in-out duration-1000 cursor-pointer`}
-                                />
+                                    style={{ transform: `translateX(-${currentSlide * 100}%)` }}
+                                >
+                                    <div className={`absolute  left-0 right-0 bottom-0 h-[30%]  w-full bg-gradient-to-b from-transparent to-gray-800`}>
+
+                                    </div>
+
+                                    <img
+                                        onTouchStart={handleTouchStart}
+                                        onTouchEnd={handleTouchEnd}
+                                        onMouseDown={(e) => showCarousel(index)}
+                                        key={index}
+                                        src={config?.IMG_BASE_URL + slide?.image_url}
+
+                                        alt=""
+
+                                        className={`object-cover w-full h-full `}
+                                    />
+                                </div>
                             )
                         })
                     }
