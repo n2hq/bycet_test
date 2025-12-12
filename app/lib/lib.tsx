@@ -1546,3 +1546,14 @@ export function generateRandom10DigitNumber() {
     const max = 9999999999; // largest 10-digit number
     return Math.floor(Math.random() * (max - min + 1)) + min;
 }
+
+
+export function removeAllParagraphs(text: string) {
+    return text.replace(/\n/g, ' ').replace(/\s+/g, ' ').trim();
+}
+
+
+export function truncateText(text: string, desiredLength: number) {
+    const strLen = text.length
+    return (strLen > 100) ? text.substring(0, desiredLength) + '...' : text
+}

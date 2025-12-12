@@ -1,11 +1,11 @@
 import { LoaderFunction, MetaFunction } from '@remix-run/node'
-import { useLoaderData } from '@remix-run/react'
+import { useLoaderData, useLocation } from '@remix-run/react'
 import React, { useEffect, useState } from 'react'
 import SearchHead from '~/components/content/SearchHead'
 import ResponsiveNav from '~/components/header/lite/ResponsiveNav'
 import { GalleryProvider } from '~/context/GalleryContext'
 import RatingProvider from '~/context/RatingContext'
-import { config, generateRandom10DigitNumber, getBusinessGallery, getBusinessProfileBgData, getBusinessProfileImageData, getBusinessVideoGallery, getOperatingHours, getPage, getProductGallery, getRatingsReviews, getSearch, getVideoGallery, logError } from '~/lib/lib'
+import { config, generateRandom10DigitNumber, getBusinessGallery, getBusinessProfileBgData, getBusinessProfileImageData, getBusinessVideoGallery, getOperatingHours, getPage, getProductGallery, getRatingsReviews, getSearch, getVideoGallery, logError, removeAllParagraphs, truncateText } from '~/lib/lib'
 import BusinessLayout from './assets/BusinessLayout'
 import Footer from '~/components/footer/Footer'
 import Related from './assets/Related'
@@ -44,6 +44,9 @@ export const loader: LoaderFunction = async ({ request, params }) => {
         let reportTime
         let businessProfileBgData
 
+        const url = new URL(request.url);
+        const pathname = url.pathname;
+        let fullPath
         let randomNumber
 
         try {
@@ -56,6 +59,7 @@ export const loader: LoaderFunction = async ({ request, params }) => {
             products = await getProductGallery(listing?.gid, listing?.owner)
             reportTime = await ReportTime(listing)
             randomNumber = generateRandom10DigitNumber()
+            fullPath = config.BASE_URL + pathname
             //console.log(profileImageData)
         } catch (error: any) {
             console.log(error.message)
@@ -73,7 +77,8 @@ export const loader: LoaderFunction = async ({ request, params }) => {
             videoGallery: videoGallery,
             products: products,
             reportTime: reportTime,
-            randomNumber: randomNumber
+            randomNumber: randomNumber,
+            fullPath: fullPath
         }
     } catch (err: any) {
         logError(err)
@@ -84,6 +89,7 @@ export const loader: LoaderFunction = async ({ request, params }) => {
 export const meta: MetaFunction<typeof loader> = ({ data }) => {
     try {
         let randomNo = data?.randomNumber
+        let fullPath = data?.fullPath
 
         const listing = data?.listing
         const profileImageData = data?.profileImageData
@@ -116,15 +122,17 @@ export const meta: MetaFunction<typeof loader> = ({ data }) => {
 
         const keywords: string[] | null = getKeyWords(listing?.business_phrases || null)
 
+        const descr = truncateText(removeAllParagraphs(listing?.short_description), 400)
+
         return [
             { title: listing?.title || "Bycet Inc." },
-            { name: "description", content: listing?.short_description },
+            { name: "description", content: descr },
             { name: "keywords", content: keywords },
             { property: "fb:app_id", content: "834713989354015" },
-            { property: "og:url", content: listing?.website || "https://bycet.com" },
+            { property: "og:url", content: fullPath || "https://bycet.com" },
             { property: "og:type", content: "website" },
             { property: "og:title", content: listing?.title || "Bycet Business Directory" },
-            { property: "og:description", content: listing?.short_description },
+            { property: "og:description", content: descr },
             { property: "og:image", content: `${profileImageLink}?v=${randomNo}` },
             { property: "og:image:secure_url", content: `${profileImageLink}?v=${randomNo}` },
             { property: "og:image:type", content: mimetype },
@@ -135,7 +143,7 @@ export const meta: MetaFunction<typeof loader> = ({ data }) => {
             { name: "twitter:creator", content: "@bycetinc" },
             { name: "twitter:card", content: "summary_large_image" },
             { name: "twitter:title", content: listing?.title || "Bycet Business Directory" },
-            { name: "twitter:description", content: listing?.short_description },
+            { name: "twitter:description", content: descr },
             { name: "twitter:image", content: `${profileImageLink}?v=${randomNo}` },
             { name: "twitter:image:alt", content: listing?.title || "Bycet.com" }
         ];
