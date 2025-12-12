@@ -125,17 +125,18 @@ export const meta: MetaFunction<typeof loader> = ({ data }) => {
             { property: "og:type", content: "website" },
             { property: "og:title", content: listing?.title || "Bycet Business Directory" },
             { property: "og:description", content: listing?.short_description },
-            { property: "og:image", content: profileImageLink },
-            { property: "og:image:secure_url", content: profileImageLink },
+            { property: "og:image", content: `${profileImageLink}?v=${randomNo}` },
+            { property: "og:image:secure_url", content: `${profileImageLink}?v=${randomNo}` },
             { property: "og:image:type", content: mimetype },
-            { property: "og:image:width", content: "200" },
+            { property: "og:image:width", content: "1200" },
+            { property: "og:image:height", content: "630" },
             { property: "og:image:alt", content: listing?.title || "Bycet" },
             { name: "twitter:site", content: "@bycetinc" },
             { name: "twitter:creator", content: "@bycetinc" },
             { name: "twitter:card", content: "summary_large_image" },
             { name: "twitter:title", content: listing?.title || "Bycet Business Directory" },
             { name: "twitter:description", content: listing?.short_description },
-            { name: "twitter:image", content: `${listing?.short_description}?v=${randomNo}` },
+            { name: "twitter:image", content: `${profileImageLink}?v=${randomNo}` },
             { name: "twitter:image:alt", content: listing?.title || "Bycet.com" }
         ];
     } catch (e: any) {
