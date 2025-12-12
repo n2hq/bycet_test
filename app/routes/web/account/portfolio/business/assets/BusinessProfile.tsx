@@ -205,10 +205,8 @@ const BusinessProfile = ({ data }: any) => {
                     <div className={`${formWrapperClass} mt-0  rounded-lg pt-4 md:max-w-[80%]
                                 lg:max-w-[60%] w-full mx-auto `}>
 
-                        <div className={`text-2xl mb-5`}>
-                            Page update
-                        </div>
-                        <div className={`text-xl font-[600] leading-[1.4em] px-[10px] text-black mb-[32px]`}>
+
+                        <div className={`text-2xl leading-[1.4em] px-[10px] text-gray-500 mb-[32px] font-bold text-center bg-gray-100 w-full p-3 border rounded`}>
                             {data?.businessProfile.title}
                         </div>
 

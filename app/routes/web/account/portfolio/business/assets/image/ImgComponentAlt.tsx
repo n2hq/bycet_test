@@ -2,7 +2,7 @@ import React, { useEffect, useRef, useState } from 'react'
 import { MdEditSquare } from 'react-icons/md'
 import { useNotification } from '~/context/NotificationContext'
 import { useOperation } from '~/context/OperationContext'
-import { config, headers } from '~/lib/lib'
+import { appConfig, config, headers } from '~/lib/lib'
 
 const ImgComponentAlt = ({ listing, user, businessProfileImageData }: any) => {
 

@@ -2,7 +2,7 @@ import React, { useEffect, useRef, useState } from 'react'
 import { MdEditSquare } from 'react-icons/md'
 import { useNotification } from '~/context/NotificationContext'
 import { useOperation } from '~/context/OperationContext'
-import { config, headers } from '~/lib/lib'
+import { appConfig, config, headers } from '~/lib/lib'
 
 const ImgComponent = ({ listing, user, businessProfileImageData }: any) => {
 
@@ -12,6 +12,8 @@ const ImgComponent = ({ listing, user, businessProfileImageData }: any) => {
     if (businessProfileImageData.image_url) {
         imgconst = config.IMG_BASE_URL + businessProfileImageData.image_url
     }
+
+
 
 
     const [imgSrc, setImgSrc] = useState<any>(imgconst)

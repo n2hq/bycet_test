@@ -53,7 +53,12 @@ const BusinessDrawer = ({ isOpen, userGuid, businessGuid }: any) => {
         }
     }, [user])
 
-    const navOpen = isOpen ? "translate-x-0 " : "-translate-x-[110%]"
+    const navOpen = isOpen
+        ? "translate-x-0 opacity-100"
+        : "-translate-x-[110%] opacity-0 pointer-events-none";
+
+
+
     const location = useLocation()
     const pathname = `/web/account/portfolio/${businessGuid}/${userGuid}`
     const businesspath = `/web/account/portfolio/${businessGuid}`
@@ -67,7 +72,7 @@ const BusinessDrawer = ({ isOpen, userGuid, businessGuid }: any) => {
 
     return (
         <div className={`relative`}>
-            <div className={` fixed ${navOpen}   w-[250px] h-screen bg-white shadow-lg transform transition-transform ease-in-out duration-500 z-[10] absolute top-0 left-0`}>
+            <div className={` fixed ${navOpen}   w-[250px] h-screen bg-white shadow-lg transform transition-transform ease-in-out duration-1000 z-[1] top-0`}>
                 <div className={`p-5 border-b font-bold text-lg`}>
                     Settings
                 </div>

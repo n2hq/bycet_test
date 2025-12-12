@@ -5,7 +5,7 @@ import { FiArrowRight } from 'react-icons/fi'
 import { RiDoubleQuotesL } from 'react-icons/ri'
 import Placeholder from '~/components/content/Placeholder'
 import SmallPlaceholder from '~/components/content/SmallPlaceholder'
-import { config } from '~/lib/lib'
+import { config, convertDashToSpace } from '~/lib/lib'
 
 const ResultItem = ({ listing, index }: any) => {
     const [placeholder, setPlaceholder] = useState('/images/bycetplaceholder.png')
@@ -42,14 +42,13 @@ const ResultItem = ({ listing, index }: any) => {
                     style={{ backgroundImage: `url(${placeholder})` }}
                 >
                     {
-                        listing?.image_url !== null ?
-                            <img
-                                src={imgsrc}
-                                alt={listing.title}
-                                className={`object-cover w-full h-full text-sm bg-white
+
+                        <img
+                            src={imgsrc}
+                            alt={listing.title}
+                            className={`object-cover w-full h-full text-sm bg-white
                              `}
-                            /> :
-                            <SmallPlaceholder />
+                        />
                     }
                     {/* <div className={`w-full h-[50%]
                             absolute z-[10] bottom-0 
@@ -65,14 +64,14 @@ const ResultItem = ({ listing, index }: any) => {
                 w-full md:gap-x-[4px]`}>
                             {/** left */}
                             <div className={`w-full md:w-[60%] -space-y-1 block`}>
-                                <div className={`font-bold text-[14px] text-brown-800 line-clamp-1`}>
+                                <div className={`font-semibold text-[14px] text-brown-800 line-clamp-1`}>
                                     {listing.title}
                                 </div>
 
-                                <div className={`font-normal text-[11.5px] flex place-items-center gap-1`}>
+                                <div className={` text-lg flex place-items-center gap-1`}>
 
-                                    <div className={`capitalize flex place-items-center `}>
-                                        {listing.category}
+                                    <div className={`capitalize flex place-items-center text-sm `}>
+                                        {convertDashToSpace(listing.category)}
                                     </div>
 
                                 </div>
@@ -88,7 +87,7 @@ const ResultItem = ({ listing, index }: any) => {
                             {/** right */}
                             <div className={`w-full lg:w-[40%] hidden 
                                 sm:block`}>
-                                <div className={`flex flex-col place-items-end place-content-end font-bold text-black tracking-tighter`}>
+                                <div className={`flex flex-col place-items-end place-content-end text-black tracking-tighter`}>
                                     {listing.phone}
                                 </div>
                                 <div className={`flex flex-col text-end text-[12px]
