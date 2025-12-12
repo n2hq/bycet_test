@@ -6,6 +6,7 @@ import { RiSeparator } from 'react-icons/ri'
 import { TbSeparatorVertical } from 'react-icons/tb'
 import { formatNumber } from '~/lib/lib'
 import Review from './Review'
+import ShareButtons from './ShareButtons'
 
 const AddresPanelContext = createContext<any | null>(null)
 
@@ -213,6 +214,7 @@ const AddressPanelContent = () => {
                             </div>
 
                         </div>
+
 
 
                         <div className={`pb-6`}>

@@ -5,7 +5,7 @@ import SearchHead from '~/components/content/SearchHead'
 import ResponsiveNav from '~/components/header/lite/ResponsiveNav'
 import { GalleryProvider } from '~/context/GalleryContext'
 import RatingProvider from '~/context/RatingContext'
-import { config, getBusinessGallery, getBusinessProfileBgData, getBusinessProfileImageData, getBusinessVideoGallery, getOperatingHours, getPage, getProductGallery, getRatingsReviews, getSearch, getVideoGallery, logError } from '~/lib/lib'
+import { config, generateRandom10DigitNumber, getBusinessGallery, getBusinessProfileBgData, getBusinessProfileImageData, getBusinessVideoGallery, getOperatingHours, getPage, getProductGallery, getRatingsReviews, getSearch, getVideoGallery, logError } from '~/lib/lib'
 import BusinessLayout from './assets/BusinessLayout'
 import Footer from '~/components/footer/Footer'
 import Related from './assets/Related'
@@ -31,6 +31,7 @@ import RelatedAlt from './assets/RelatedAlt'
 export const loader: LoaderFunction = async ({ request, params }) => {
 
 
+
     try {
         const id = params.id || null
         let listing
@@ -43,6 +44,8 @@ export const loader: LoaderFunction = async ({ request, params }) => {
         let reportTime
         let businessProfileBgData
 
+        let randomNumber
+
         try {
             listing = await getPage(id)
             profileImageData = await getBusinessProfileImageData(listing?.gid)
@@ -52,6 +55,7 @@ export const loader: LoaderFunction = async ({ request, params }) => {
             videoGallery = await getBusinessVideoGallery(listing?.gid)
             products = await getProductGallery(listing?.gid, listing?.owner)
             reportTime = await ReportTime(listing)
+            randomNumber = generateRandom10DigitNumber()
             //console.log(profileImageData)
         } catch (error: any) {
             console.log(error.message)
@@ -68,7 +72,8 @@ export const loader: LoaderFunction = async ({ request, params }) => {
             businessProfileBgData: businessProfileBgData,
             videoGallery: videoGallery,
             products: products,
-            reportTime: reportTime
+            reportTime: reportTime,
+            randomNumber: randomNumber
         }
     } catch (err: any) {
         logError(err)
@@ -78,6 +83,8 @@ export const loader: LoaderFunction = async ({ request, params }) => {
 
 export const meta: MetaFunction<typeof loader> = ({ data }) => {
     try {
+        let randomNo = data?.randomNumber
+
         const listing = data?.listing
         const profileImageData = data?.profileImageData
 
@@ -110,23 +117,26 @@ export const meta: MetaFunction<typeof loader> = ({ data }) => {
         const keywords: string[] | null = getKeyWords(listing?.business_phrases || null)
 
         return [
-            { title: listing?.title || "Garssete Inc." },
+            { title: listing?.title || "Bycet Inc." },
             { name: "description", content: listing?.short_description },
             { name: "keywords", content: keywords },
-            { property: "fb:app_id", content: "1325393508603168" },
-            { property: "og:url", content: listing?.website || "https://garssete.com" },
+            { property: "fb:app_id", content: "834713989354015" },
+            { property: "og:url", content: listing?.website || "https://bycet.com" },
             { property: "og:type", content: "website" },
-            { property: "og:title", content: listing?.title || "Garssete.com" },
+            { property: "og:title", content: listing?.title || "Bycet Business Directory" },
             { property: "og:description", content: listing?.short_description },
             { property: "og:image", content: profileImageLink },
             { property: "og:image:secure_url", content: profileImageLink },
             { property: "og:image:type", content: mimetype },
             { property: "og:image:width", content: "200" },
-            { property: "og:image:alt", content: listing?.title || "Garssete" },
-            { name: "twitter:creator", content: "garssete" },
+            { property: "og:image:alt", content: listing?.title || "Bycet" },
+            { name: "twitter:site", content: "@bycetinc" },
+            { name: "twitter:creator", content: "@bycetinc" },
             { name: "twitter:card", content: "summary_large_image" },
-            { name: "twitter:title", content: listing?.title || "Garssete Directory Listing" },
+            { name: "twitter:title", content: listing?.title || "Bycet Business Directory" },
             { name: "twitter:description", content: listing?.short_description },
+            { name: "twitter:image", content: `${listing?.short_description}?v=${randomNo}` },
+            { name: "twitter:image:alt", content: listing?.title || "Bycet.com" }
         ];
     } catch (e: any) {
         logError(e)
@@ -167,6 +177,8 @@ const index = () => {
              <div>Possible no internet connection. Check to reconnect.</div>
          )
      } */
+
+
 
     return (
 

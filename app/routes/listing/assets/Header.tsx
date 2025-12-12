@@ -3,6 +3,8 @@ import StarRatingAlt from './StarRatingAlt'
 import { appConfig, config } from '~/lib/lib'
 import FormattedAddress from './FormattedAddress'
 import Placeholder from '~/components/content/Placeholder'
+import ShareButtons from './ShareButtons'
+import { useLocation } from '@remix-run/react'
 
 const Header = ({ listing, profileImageData, operatingHoursStatus, ratingsData }: any) => {
     const [profileImg, setProfileImg] = useState('')
@@ -17,6 +19,12 @@ const Header = ({ listing, profileImageData, operatingHoursStatus, ratingsData }
     }, [profileImageData])
 
     const fallbackImg = `/images/fallbackBusinessImg.png`
+    const location = useLocation()
+    const [fullPath, setFullPath] = useState('')
+
+    useEffect(() => {
+        setFullPath(config.BASE_URL + location.pathname)
+    }, [])
 
     return (
         <div className={` mt-4`}>
@@ -111,6 +119,18 @@ const Header = ({ listing, profileImageData, operatingHoursStatus, ratingsData }
                     </div>
                 </div>
             </div>
+
+
+            {/** share */}
+            {
+                (fullPath !== '' && listing?.title !== null && listing?.title !== undefined) &&
+                <div className={`flex w-full gap-3 mt-4`}>
+                    <ShareButtons
+                        url={fullPath}
+                        title={listing?.title}
+                    />
+                </div>
+            }
         </div>
     )
 }

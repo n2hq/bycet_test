@@ -30,6 +30,7 @@ import RatingBoxSquare from './RatingBoxSquare';
 import Videos from './Videos';
 import Products from './products/Products';
 import AddressPanel from './AddressPanel';
+import { Link } from '@remix-run/react';
 
 
 
@@ -73,6 +74,19 @@ const BusinessLayout = ({
 
         }
     }, [listing, reportTime])
+
+
+    useEffect(() => {
+        const script = document.createElement('script')
+        script.id = 'facebook-jssdk'
+        script.src = 'https://connect.facebook.net/en_US/sdk.js';
+        script.async = true;
+        script.defer = true;
+        script.crossOrigin = 'anonymous';
+        document.body.appendChild(script);
+
+    }, [])
+
     return (
         <div className={`mt-0 `}>
 
@@ -106,6 +120,8 @@ const BusinessLayout = ({
                             </div>
                         }
                     </div>
+
+
 
                     <div className=' '>
                         {
