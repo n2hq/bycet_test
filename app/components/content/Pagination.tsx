@@ -111,13 +111,13 @@ export default function Pagination({ pagination }: PaginationProps) {
 
                 {/* Next Button */}
                 <a
-                    href={pagination.hasNext ? createPageUrl(currentPage + 1) : '#'}
-                    className={`px-3 py-2 border rounded-md text-sm font-medium ${!pagination.hasNext
+                    href={pagination?.hasNext ? createPageUrl(currentPage + 1) : '#'}
+                    className={`px-3 py-2 border rounded-md text-sm font-medium ${!pagination?.hasNext
                         ? 'opacity-50 cursor-not-allowed text-gray-400'
                         : 'text-gray-700 hover:bg-gray-100'
                         }`}
-                    aria-disabled={!pagination.hasNext}
-                    onClick={(e) => !pagination.hasNext && e.preventDefault()}
+                    aria-disabled={!pagination?.hasNext}
+                    onClick={(e) => !pagination?.hasNext && e.preventDefault()}
                 >
                     Next
                 </a>
