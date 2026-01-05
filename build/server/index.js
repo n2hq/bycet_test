@@ -7,7 +7,7 @@ import { createReadableStreamFromReadable } from "@remix-run/node";
 import { RemixServer, useNavigate, useRouteError, useLocation, Outlet, useNavigation, isRouteErrorResponse, Meta, Links, ScrollRestoration, Scripts, Link, useLoaderData, useSearchParams, useParams } from "@remix-run/react";
 import { isbot } from "isbot";
 import { renderToPipeableStream } from "react-dom/server";
-import React, { createContext, useContext, useState, useEffect, useRef } from "react";
+import React, { useContext, createContext, useState, useEffect, useRef } from "react";
 import NProgress from "nprogress";
 import { FaSpinner, FaSchool, FaWheelchair, FaSwimmingPool, FaParking, FaFacebookSquare, FaTiktok, FaYoutubeSquare, FaVimeoSquare, FaLinkedinIn, FaWifi, FaTelegram, FaLinkedin, FaSignOutAlt, FaCarSide, FaAngleDown, FaMobile, FaQuestion, FaBriefcase, FaHome, FaShoppingBag, FaBlenderPhone, FaSearch, FaChevronLeft, FaChevronRight, FaFacebook, FaInstagram, FaPinterestSquare } from "react-icons/fa";
 import CryptoJS from "crypto-js";
@@ -27057,7 +27057,7 @@ const loader$U = async ({ request, params }) => {
             tbl_sys_facilities sf 
             ON f.facility_id = sf.facility_id
         WHERE 
-            f.business_guid = 'bc28e31d-f128-4f7e-84ab-44c74bef86bb'
+            f.business_guid = ?
         ORDER BY 
             f.created_at DESC;`;
   try {
