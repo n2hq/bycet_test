@@ -90,9 +90,9 @@ const Index = () => {
                 {userProfile === null ? 'Loading...' : ''}
 
                 <CardHeaderWithSearch
-                    base_url={'/web/account/portfolio'}
-                    title={`${formatNumber(data.portfolio.length)} Pages`}
-                    q={q}
+                    baseUrl={'/web/account/portfolio'}
+                    noOfPages={data.portfolio.length}
+                    query={q}
 
                 />
 
