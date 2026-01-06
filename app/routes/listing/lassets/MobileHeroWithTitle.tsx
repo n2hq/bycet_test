@@ -16,10 +16,10 @@ const defaultImg = [{
     default: true
 }]
 const MobileHeroWithTitle = ({ title, images, listing }: MobileHeroProps) => {
-    const [heroImages, setHeroImages] = useState<ImageType[] | null>(null)
+    const [heroImages, setHeroImages] = useState<ImageType[]>([])
 
     useEffect(() => {
-        if (images === null || images.length === 0) {
+        if (images.length === 0) {
             setHeroImages(defaultImg)
         } else {
             setHeroImages(images)

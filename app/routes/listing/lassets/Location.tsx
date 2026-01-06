@@ -27,7 +27,22 @@ const Location = ({ listing }: LocationProps) => {
             let addressLink = `https://www.google.com/maps?q=${(address)}&t=&z=15&ie=UTF8&iwloc=B&output=`
             setAddress(address)
             setAddressLink(addressLink)
-            setCityCountry(`${listing?.city_name && listing?.city_name + ', '} ${listing?.country_name}`)
+
+            let cty: string = ''
+            let ctr = listing?.country_name
+
+            console.log(listing?.city_name)
+            if (listing?.city_name !== null) {
+                cty = listing?.city_name + ', '
+            }
+
+            if (listing?.country_name) {
+                ctr = listing?.country_name
+            }
+
+            let ctyctr = cty + ctr
+
+            setCityCountry(ctyctr)
         }
 
         if (listing !== null) {

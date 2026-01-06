@@ -16,7 +16,7 @@ const heroimgs = [
 ]
 
 interface HeroCarouselProps {
-    images: ImageType[] | null
+    images: ImageType[]
     listing: ListingType
 }
 
@@ -109,6 +109,12 @@ const HeroCarousel = ({ images, listing }: HeroCarouselProps) => {
         }
     }, [images])
 
+    const handleShowSlides = (images: ImageType[], index: number) => {
+        if (!images[0].default) {
+            showCarousel(index)
+        }
+    }
+
 
     return (
         <div className={`relative`}>
@@ -134,7 +140,9 @@ const HeroCarousel = ({ images, listing }: HeroCarouselProps) => {
                                 <img
                                     onTouchStart={handleTouchStart}
                                     onTouchEnd={handleTouchEnd}
-                                    onMouseDown={(e) => showCarousel(index)}
+                                    onMouseDown={(e) => {
+                                        handleShowSlides(images, index)
+                                    }}
                                     key={index}
                                     src={slide?.default ? (slide?.image_url) : (config.IMG_BASE_URL + slide?.image_url)}
 

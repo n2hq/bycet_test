@@ -235,7 +235,7 @@ const SinglePhoto = ({ index, imgs, showCarousel }: SinglePhotoProp) => {
                     relative cursor-pointer w-full h-full`}
             onMouseDown={(e) => {
 
-                if (showCarousel) {
+                if (showCarousel && !imgs[0].default) {
                     showCarousel(index, imgs)
                 }
             }}
