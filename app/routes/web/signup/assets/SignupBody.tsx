@@ -8,8 +8,7 @@ import AuthHeader from '~/components/content/AuthHeader'
 const SignupBody = () => {
     return (
         <div className={`bg-white w-full 
-        bg-[url('/images/mobiletab.jpg')]
-        bg-cover bg-center min-h-screen flex place-content-center`}>
+        min-h-screen flex place-content-center`}>
             <AuthHeader />
             <SignupFormAlt />
         </div>

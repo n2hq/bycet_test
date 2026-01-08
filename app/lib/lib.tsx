@@ -58,6 +58,17 @@ export function DoResponse(json: any, code: number = 500) {
     )
 }
 
+export const spinUpPlaceholder = () => {
+    const images = [
+        `https://cdn.brave.photos/storage/images/b20fb69d23319bf218a865ac6130e070a9c088e1e6804e8363afea0b70f8b660@Carousel.png`,
+        `https://plus.unsplash.com/premium_photo-1701091956254-8f24ea99a53b?fm=jpg&q=60&w=3000&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MXx8ZGFyayUyMHdhbGxwYXBlcnxlbnwwfHwwfHx8MA%3D%3D`,
+        `https://4kwallpapers.com/images/wallpapers/windows-11-dark-mode-abstract-background-black-background-2880x1800-8710.jpg`
+    ]
+    if (!images || images.length === 0) return '';
+    const randomIndex = Math.floor(Math.random() * images.length);
+    return images[randomIndex];
+}
+
 export function GetResponse(data: any, success: boolean = false, code: number = 200) {
 
     const response = {

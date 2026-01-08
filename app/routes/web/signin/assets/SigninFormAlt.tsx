@@ -105,8 +105,8 @@ export default function SigninFormAlt({ referer }: SigninFormAltProps) {
 
 
     return (
-        <div className="min-h-screen w-screen min-w-screen bg-black/50 flex items-center justify-center p-4">
-            <div className={`bg-white rounded-2xl shadow-xl overflow-hidden w-full max-w-sm transition-all duration-700 ease-in-out transform ${isVisible ? 'translate-y-0 opacity-100' : 'translate-y-10 opacity-0'}`}>
+        <div className="min-h-screen w-screen min-w-screen bg-white flex items-center justify-center p-4">
+            <div className={`bg-white border rounded-2xl shadow-xl overflow-hidden w-full max-w-sm transition-all duration-700 ease-in-out transform ${isVisible ? 'translate-y-0 opacity-100' : 'translate-y-10 opacity-0'}`}>
                 <div className="pb-8">
                     {/* Brand Header */}
                     <div className="flex justify-center mb-6 mt-0 py-2 bg-gray-50 border-b">

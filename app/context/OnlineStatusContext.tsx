@@ -40,9 +40,9 @@ export const OnlineStatusProvider = ({ children }: { children: React.ReactNode }
                         bottom: 0,
                         left: 0,
                         right: 0,
-                        background: "blue",
+                        background: "#A52A2A",
                         color: "#fff",
-                        padding: "10px",
+                        padding: "20px",
                         textAlign: "center",
                         fontWeight: "normal",
                         zIndex: 1000,
@@ -51,7 +51,7 @@ export const OnlineStatusProvider = ({ children }: { children: React.ReactNode }
 
                     }}
                 >
-                    ⚠️ System is offline. Check internet connection.
+                    ⚠️ Check internet connection.
                 </div>
             )}
         </OnlineStatusContext.Provider>

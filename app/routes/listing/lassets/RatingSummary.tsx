@@ -25,7 +25,7 @@ const RatingSummary = ({ ratings, listing, reviewContext, businessRating }: Rati
     }, [ratings])
 
     return (
-        <div className='mb-8 border-b border-solid md:border-none'>
+        <div className='mb-8 border  border-solid   rounded-3xl shadow-lg shadow-gray-100'>
             {/* <div className={`p-3 bg-gray-100`}>
                 <div className={`text-[13px] tracking-normal font-normal text-gray-500 text-center pb-3 md:pb-5 max-w-[70%] md:max-w-full mx-auto w-full md:text-start md:text-lg leading-[1.3em]`}>
                     Please always verify businesses before conducting transactions. Do not send funds to unknown individuals.

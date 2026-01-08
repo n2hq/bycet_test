@@ -3,7 +3,7 @@ import { BiMenu } from 'react-icons/bi'
 import { MdOutlineImage } from 'react-icons/md'
 import { useGallery } from '~/context/GalleryContext'
 import { useSliderContext } from '~/context/SliderContext'
-import { config } from '~/lib/lib'
+import { config, spinUpPlaceholder } from '~/lib/lib'
 import { ListingType } from '~/lib/types'
 import { CgMenuGridR } from "react-icons/cg";
 
@@ -38,8 +38,9 @@ export interface HeroProp {
     listing: ListingType
 }
 
+///images/abstract_placeholder.jpg
 const defaultImg = [{
-    image_url: '/images/abstract_placeholder.jpg',
+    image_url: spinUpPlaceholder(),
     default: true
 }]
 
@@ -55,7 +56,7 @@ const Hero = ({ images, listing }: HeroProp) => {
 
     useEffect(() => {
         if (images === null || images.length === 0) {
-            setHeroImages(defaultImg)
+            //setHeroImages(defaultImg)
         } else {
             setHeroImages(images)
         }
@@ -82,33 +83,32 @@ const Hero = ({ images, listing }: HeroProp) => {
 
 
     return (
-        <div>
+        <div className={`mt-6 h-[350px] rounded-[40px] overflow-hidden bg-gray-600 relative`}>
+            <div className={`absolute inset-0 flex items-center justify-center text-gray-400 font-extralight text-sm`}>
+                {listing?.title}</div>
+            <ShowGallery showGallery={showGallery} />
             {
                 heroImages?.length > 0 &&
-                <div className={`mt-6 h-[350px] relative`}>
-                    <ShowGallery showGallery={showGallery} />
+                <div className={`relative  h-full bg-white`}>
                     {
                         (loaded && heroImages?.length === 1) &&
-                        <div className={`relative rounded-xl overflow-hidden h-full`}>
-                            <SinglePhoto imgs={heroImages} index={0} showCarousel={showCarousel} />
-                        </div>
+                        <SinglePhoto imgs={heroImages} index={0} showCarousel={showCarousel} />
                     }
+
 
                     {
                         (loaded && heroImages?.length === 2) &&
-                        <div className={`relative rounded-xl overflow-hidden h-full`}>
-                            <div className={`grid grid-cols-12 gap-2 h-full`}>
+                        <div className={`grid grid-cols-12 gap-2 h-full`}>
 
-                                <div className={`col-span-7
+                            <div className={`col-span-7
                     row-span-2 overflow-hidden
                     relative cursor-pointer`}>
-                                    <SinglePhoto imgs={heroImages} index={0} showCarousel={showCarousel} />
-                                </div>
+                                <SinglePhoto imgs={heroImages} index={0} showCarousel={showCarousel} />
+                            </div>
 
-                                <div className={`col-span-5 row-span-2 overflow-hidden relative cursor-pointer h-full`}
-                                >
-                                    <SinglePhoto imgs={heroImages} index={1} showCarousel={showCarousel} />
-                                </div>
+                            <div className={`col-span-5 row-span-2 overflow-hidden relative cursor-pointer h-full`}
+                            >
+                                <SinglePhoto imgs={heroImages} index={1} showCarousel={showCarousel} />
                             </div>
                         </div>
                     }
@@ -116,90 +116,87 @@ const Hero = ({ images, listing }: HeroProp) => {
 
                     {
                         (loaded && heroImages?.length === 3) &&
-                        <div className={`relative rounded-xl overflow-hidden h-full`}>
-                            <div className={`grid grid-cols-12 gap-2 h-full`}>
+                        <div className={`grid grid-cols-12 gap-2 h-full`}>
 
-                                <div className={`col-span-7
+                            <div className={`col-span-7
                     row-span-2 overflow-hidden
                     relative cursor-pointer`}>
-                                    <SinglePhoto imgs={heroImages} index={0} showCarousel={showCarousel} />
-                                </div>
+                                <SinglePhoto imgs={heroImages} index={0} showCarousel={showCarousel} />
+                            </div>
 
-                                <div className={`col-span-5 overflow-hidden relative cursor-pointer h-full`}
-                                >
-                                    <SinglePhoto imgs={heroImages} index={1} showCarousel={showCarousel} />
-                                </div>
+                            <div className={`col-span-5 overflow-hidden relative cursor-pointer h-full`}
+                            >
+                                <SinglePhoto imgs={heroImages} index={1} showCarousel={showCarousel} />
+                            </div>
 
-                                <div className={`col-span-5 overflow-hidden relative cursor-pointer h-full`}
-                                >
-                                    <SinglePhoto imgs={heroImages} index={2} showCarousel={showCarousel} />
-                                </div>
+                            <div className={`col-span-5 overflow-hidden relative cursor-pointer h-full`}
+                            >
+                                <SinglePhoto imgs={heroImages} index={2} showCarousel={showCarousel} />
                             </div>
                         </div>
                     }
+
 
                     {
                         (loaded && heroImages.length === 4) &&
-                        <div className="relative rounded-2xl overflow-hidden h-full">
-                            <div className="grid grid-cols-12 grid-rows-2 h-full gap-2.5">
+                        <div className="grid grid-cols-12 grid-rows-2 h-full gap-1.5">
 
-                                {/* First column - full height */}
-                                <div className="col-span-5 row-span-2 relative overflow-hidden">
-                                    <SinglePhoto imgs={heroImages} index={0} showCarousel={showCarousel} />
-                                </div>
-
-                                {/* Second column - full height */}
-                                <div className="col-span-4 row-span-2 relative overflow-hidden">
-                                    <SinglePhoto imgs={heroImages} index={1} showCarousel={showCarousel} />
-                                </div>
-
-                                {/* Third column - top half */}
-                                <div className="col-span-3 row-span-1 relative overflow-hidden">
-                                    <SinglePhoto imgs={heroImages} index={2} showCarousel={showCarousel} />
-                                </div>
-
-                                {/* Third column - bottom half */}
-                                <div className="col-span-3 row-span-1 relative overflow-hidden">
-                                    <SinglePhoto imgs={heroImages} index={3} showCarousel={showCarousel} />
-                                </div>
-
+                            {/* First column - full height */}
+                            <div className="col-span-5 row-span-2 relative overflow-hidden">
+                                <SinglePhoto imgs={heroImages} index={0} showCarousel={showCarousel} />
                             </div>
+
+                            {/* Second column - full height */}
+                            <div className="col-span-4 row-span-2 relative overflow-hidden">
+                                <SinglePhoto imgs={heroImages} index={1} showCarousel={showCarousel} />
+                            </div>
+
+                            {/* Third column - top half */}
+                            <div className="col-span-3 row-span-1 relative overflow-hidden">
+                                <SinglePhoto imgs={heroImages} index={2} showCarousel={showCarousel} />
+                            </div>
+
+                            {/* Third column - bottom half */}
+                            <div className="col-span-3 row-span-1 relative overflow-hidden">
+                                <SinglePhoto imgs={heroImages} index={3} showCarousel={showCarousel} />
+                            </div>
+
                         </div>
 
                     }
+
+
 
 
                     {
                         (loaded && heroImages !== null && heroImages.length > 4) &&
-                        <div className="relative rounded-2xl overflow-hidden h-full">
-                            <div className="grid h-full grid-cols-4 grid-rows-2 gap-2.5">
+                        <div className="grid h-full grid-cols-4 grid-rows-2 gap-1.5">
 
-                                {/* BIG IMAGE */}
-                                <div className="col-span-2 row-span-2 relative">
-                                    <SinglePhoto imgs={heroImages} index={0} showCarousel={showCarousel} />
-                                </div>
-
-                                {/* SMALL IMAGE 1 */}
-                                <div className="relative">
-                                    <SinglePhoto imgs={heroImages} index={1} showCarousel={showCarousel} />
-                                </div>
-
-                                {/* SMALL IMAGE 2 */}
-                                <div className="relative">
-                                    <SinglePhoto imgs={heroImages} index={2} showCarousel={showCarousel} />
-                                </div>
-
-                                {/* SMALL IMAGE 3 */}
-                                <div className="relative">
-                                    <SinglePhoto imgs={heroImages} index={3} showCarousel={showCarousel} />
-                                </div>
-
-                                {/* SMALL IMAGE 4 */}
-                                <div className="relative">
-                                    <SinglePhoto imgs={heroImages} index={4} showCarousel={showCarousel} />
-                                </div>
-
+                            {/* BIG IMAGE */}
+                            <div className="col-span-2 row-span-2 relative">
+                                <SinglePhoto imgs={heroImages} index={0} showCarousel={showCarousel} />
                             </div>
+
+                            {/* SMALL IMAGE 1 */}
+                            <div className="relative">
+                                <SinglePhoto imgs={heroImages} index={1} showCarousel={showCarousel} />
+                            </div>
+
+                            {/* SMALL IMAGE 2 */}
+                            <div className="relative">
+                                <SinglePhoto imgs={heroImages} index={2} showCarousel={showCarousel} />
+                            </div>
+
+                            {/* SMALL IMAGE 3 */}
+                            <div className="relative">
+                                <SinglePhoto imgs={heroImages} index={3} showCarousel={showCarousel} />
+                            </div>
+
+                            {/* SMALL IMAGE 4 */}
+                            <div className="relative">
+                                <SinglePhoto imgs={heroImages} index={4} showCarousel={showCarousel} />
+                            </div>
+
                         </div>
                     }
                 </div>

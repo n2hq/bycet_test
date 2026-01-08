@@ -4,6 +4,7 @@ import { BiTrophy } from 'react-icons/bi'
 import { ImageType } from './Hero'
 import { ListingType } from '~/lib/types'
 import { list } from 'postcss'
+import { spinUpPlaceholder } from '~/lib/lib'
 
 interface MobileHeroProps {
     title: string
@@ -12,7 +13,7 @@ interface MobileHeroProps {
 }
 
 const defaultImg = [{
-    image_url: '/images/abstract_placeholder.jpg',
+    image_url: spinUpPlaceholder(),
     default: true
 }]
 const MobileHeroWithTitle = ({ title, images, listing }: MobileHeroProps) => {
@@ -20,7 +21,7 @@ const MobileHeroWithTitle = ({ title, images, listing }: MobileHeroProps) => {
 
     useEffect(() => {
         if (images.length === 0) {
-            setHeroImages(defaultImg)
+            //setHeroImages(defaultImg)
         } else {
             setHeroImages(images)
         }
@@ -28,7 +29,10 @@ const MobileHeroWithTitle = ({ title, images, listing }: MobileHeroProps) => {
 
     return (
         <div className={`block md:hidden`}>
-            <div className={`bg-black h-[450px] w-full z-[0]`}>
+            <div className={`bg-gray-700 h-[450px] w-full z-[0]`}>
+                <div className={`absolute inset-0 flex items-center -top-20 justify-center text-gray-400 font-extralight text-sm`}>
+                    {listing?.title}
+                </div>
                 <HeroCarousel images={heroImages} listing={listing} />
             </div>
 

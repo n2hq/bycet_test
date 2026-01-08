@@ -2,9 +2,9 @@ import React from 'react'
 
 const AuthHeader = () => {
     return (
-        <div className={`absolute top-0 left-0 right-0 text-white bg-black/10 w-full p-4 flex place-content-center`}>
+        <div className={`absolute top-0 left-0 right-0 text-white  w-full p-4 flex place-content-center border-b`}>
             <div className={``}>
-                <a href="/" className={`underline text-white hover:text-white/50`}>Home</a>
+                <a href="/" className={`underline text-gray-500 hover:text-gray-500 text-lg`}>Home</a>
             </div>
         </div>
     )

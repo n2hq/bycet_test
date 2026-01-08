@@ -25,7 +25,7 @@ import SocialMedia from './lassets/SocialMedia'
 import Services from './lassets/Services'
 import ClaimBusiness from './lassets/ClaimBusiness'
 import { LoaderFunction } from '@remix-run/node'
-import { config, generateRandom10DigitNumber, getBusinessGallery, getBusinessProfileBgData, getBusinessProfileImageData, getBusinessRating, getBusinessReviews, getBusinessVideoGallery, getListingByCategory, getNearbyBusinesses, getPage, getProductGallery, getRatingsReviews, getRelatedByCategory, getServiceList, getServicesByBusinessGuid, logError } from '~/lib/lib'
+import { config, generateRandom10DigitNumber, getBusinessGallery, getBusinessProfileBgData, getBusinessProfileImageData, getBusinessRating, getBusinessReviews, getBusinessVideoGallery, getListingByCategory, getNearbyBusinesses, getPage, getProductGallery, getRatingsReviews, getRelatedByCategory, getServiceList, getServicesByBusinessGuid, logError, spinUpPlaceholder } from '~/lib/lib'
 import { AddVideoType, BusinessReviewType, ListingType, ProductType, ProfileImageType, RatingsDataType, ServiceType } from '~/lib/types'
 import { ReportTime } from '~/lib/ReportTime'
 import { useLoaderData } from '@remix-run/react'
@@ -120,7 +120,7 @@ const listing = () => {
     const shareContext = useShareDialogContext()
     const [profileImg, setProfileImg] = useState('')
 
-
+    const placeholderx = spinUpPlaceholder()
 
     let listing: ListingType
     let gallery: ImageType[]
