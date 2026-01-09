@@ -1,7 +1,7 @@
-node_modules
+node_modules/
 
-.cache
-build
+.cache/
+build/
 #.env
 /commands.sh
 pm2.config.cjs
