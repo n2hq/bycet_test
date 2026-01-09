@@ -29,6 +29,7 @@ const StartingAmount = ({ listing }: AboutProps) => {
     }, [listing])
 
     const readMoreCtx = useReadMoreContext()
+    if (!readMoreCtx) return null
 
     const handleReadMore = (description: string | ReactNode) => {
         readMoreCtx?.setDescription(description)
@@ -54,6 +55,7 @@ const StartingAmount = ({ listing }: AboutProps) => {
 
         }
     }, [listing])
+
     return (
         <div className={` border-t py-10 relative`}>
 

@@ -114,13 +114,21 @@ export const loader: LoaderFunction = async ({ request, params }) => {
 
 const listing = () => {
     const reviewContext: ReviewType | null = useWriteReviewAltContext()
+    const shareContext = useShareDialogContext()
+
+    if (!reviewContext) return null
+    if (!shareContext) return null
+
     const data: any = useLoaderData()
     const [operatingHoursStatus, setOperatingHoursStatus] = useState<any | undefined>(undefined)
+
     const [showShare, setShowShare] = useState(false)
-    const shareContext = useShareDialogContext()
+
+
     const [profileImg, setProfileImg] = useState('')
 
     const placeholderx = spinUpPlaceholder()
+
 
     let listing: ListingType
     let gallery: ImageType[]
@@ -152,7 +160,7 @@ const listing = () => {
     nearby = data.nearby
     services = data.services?.data
 
-    console.log(profileImageData)
+    //console.log(profileImageData)
 
 
     useEffect(() => {

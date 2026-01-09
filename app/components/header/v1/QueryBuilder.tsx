@@ -52,9 +52,10 @@ const QueryBuilder: React.FC<QueryBuilderProps> = ({
     const [states, setStates] = useState<StateAlt[] | []>([])
     const [cities, setCities] = useState<City[] | []>([])
 
+    const searchParams = new URLSearchParams(location.search)
     // Sync with URL search params
     useEffect(() => {
-        const searchParams = new URLSearchParams(location.search)
+
         setFilters({
             q: searchParams.get('q') || '',
             category: searchParams.get('category') || '',

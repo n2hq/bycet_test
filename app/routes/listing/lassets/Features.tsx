@@ -66,6 +66,7 @@ export interface FeaturesProps {
 const Features = ({ listing }: FeaturesProps) => {
     const [features, setFeatures] = useState<any>(undefined)
     const showDescr = useReadMoreContext()
+    if (!showDescr) return null
 
     useEffect(() => {
         /* getBusinessFeatures(listing?.gid).then((data) => {

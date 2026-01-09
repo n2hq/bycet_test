@@ -9,6 +9,8 @@ import AccountUserImage from './AccountUserImage'
 const Signin = () => {
     const [open, setOpen] = useState(false)
     const auth = useAuth()
+    if (!auth) return null;
+
     const user = auth?.user
 
     const showMenu = () => setOpen(true)

@@ -5,6 +5,7 @@ import MobileMenu from './MobileMenu'
 
 const Hamburger = () => {
     const menuCtx = useMainNav()
+    if (!menuCtx) return null
 
 
 

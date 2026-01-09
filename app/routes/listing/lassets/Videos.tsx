@@ -62,8 +62,12 @@ const Videos = ({ videoGallery, listing }: VideosProps) => {
     const [rawVideos, setRawVideos] = useState(videos)
     const [open, setOpen] = useState(false)
     const [currentVideo, setCurrentVideo] = useState<any | null>(null)
+
     const slider = useVideoSliderContext()
     const videoGalleryCtx = useVideoGalleryContext()
+
+    if (!slider) return null
+    if (!videoGalleryCtx) return null
 
 
     const [video20, setVideo20] = useState<OutVideoType[]>([])

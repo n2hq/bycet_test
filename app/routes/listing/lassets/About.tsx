@@ -29,6 +29,8 @@ const About = ({ listing }: AboutProps) => {
     }, [listing])
 
     const readMoreCtx = useReadMoreContext()
+    if (!readMoreCtx) return null;
+
 
     const handleReadMore = (description: string) => {
         readMoreCtx?.setDescription(description)

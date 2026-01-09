@@ -57,8 +57,8 @@ export interface NearbyProps {
     nearby: ListingType[] | null
 }
 const NearbyBusinesses = ({ nearby }: NearbyProps) => {
-    console.log(nearby)
-    console.log('hala')
+    //console.log(nearby)
+    //console.log('hala')
     return (
         <div className='mt-12'>
             <div className={`border-t border-gray-200 py-10`}>

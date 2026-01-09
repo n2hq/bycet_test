@@ -64,6 +64,7 @@ interface ServicesProps {
 }
 const Services = ({ services }: ServicesProps) => {
     const readMoreCtx = useReadMoreWithUrlContext()
+    if (!readMoreCtx) return null
 
     const handleShowService = (service: ServiceType) => {
         readMoreCtx?.setShow(true)

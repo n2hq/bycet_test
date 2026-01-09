@@ -14,6 +14,9 @@ const Reviews = ({ listing, reviewContext }: ReviewProps) => {
     const reviewCxt: ReviewType | null = useWriteReviewAltContext()
     const auth = useAuth()
 
+    if (!reviewCxt) return null
+    if (!auth) return null
+
     useEffect(() => {
         if (listing) {
             setListing(listing)

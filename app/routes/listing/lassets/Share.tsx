@@ -13,7 +13,8 @@ interface ShareProps {
 }
 const Share = ({ shareContext, listing, profileImg, profileImageData }: ShareProps) => {
     const [show, setShow] = useState(false)
-    const share = useShareDialogContext()
+
+
 
     const showShareDialog = () => {
         shareContext?.setShow(true)

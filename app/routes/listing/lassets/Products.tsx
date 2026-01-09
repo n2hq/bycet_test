@@ -62,6 +62,9 @@ const Products = ({ listing, products }: ProductsProps) => {
     const productSlider = useProductSliderContext()
     const productCtx = useProductGalleryContext()
 
+    if (!productSlider) return null
+    if (!productCtx) return null
+
 
     const scrollLeft = () => {
         if (scrollRef.current) {

@@ -25,6 +25,7 @@ const HeroCarousel = ({ images, listing }: HeroCarouselProps) => {
     const slideStep = useRef(0)
     const counter = useRef(0)
     const slider = useSliderContext()
+    if (!slider) return null
 
     const [slides, setSlides] = useState<any | null>(heroimgs)
 
