@@ -24,7 +24,7 @@ git pull origin main --allow-unrelated-histories --no-rebase || echo "No existin
 
 
 echo "Deleting build folder..."
-#rm -rf build/ 2>/dev/null || true
+rm -rf build/ 2>/dev/null || true
 
 #echo "🛠  Building TEST..."
 #npm run build:test
